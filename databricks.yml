@@ -1,0 +1,13 @@
+bundle:
+  name: lakeflow-report-demo
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-489f4dbc-4095.cloud.databricks.com
+      root_path: /Workspace/Users/22133061@student.hcmute.edu.vn/.bundle/${bundle.name}/${bundle.target}

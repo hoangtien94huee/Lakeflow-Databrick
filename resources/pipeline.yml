@@ -1,0 +1,35 @@
+resources:
+  pipelines:
+    # Pipeline using SQL files 
+    # report_pipeline_sql:
+    #   name: "lakeflow-report-demo-pipeline-sql"
+    #   catalog: "main"
+    #   target: "demo"
+    #   libraries:
+    #     - file:
+    #         path: ../src/sql/bronze.sql
+    #     - file:
+    #         path: ../src/sql/silver.sql
+    #     - file:
+    #         path: ../src/sql/gold.sql
+    #     - file:
+    #         path: ../src/sql/gold_report_sql.sql
+    #   configuration:
+    #     "pipelines.trigger.interval": "triggered"
+    #   serverless: true
+    
+    # Pipeline using Python notebooks
+    report_pipeline:
+      name: "lakeflow-report-demo-pipeline"
+      catalog: "main"
+      target: "demo"
+      libraries:
+        - notebook:
+            path: ../src/python/bronze_to_silver.ipynb
+        - notebook:
+            path: ../src/python/silver_to_gold.ipynb
+        - notebook:
+            path: ../src/python/gold_report_notebook.ipynb
+      configuration:
+        "pipelines.trigger.interval": "triggered"
+      serverless: true
